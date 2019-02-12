@@ -1,7 +1,7 @@
 package resolver
 
 import (
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/graph"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/graph"
 )
 
 type Resolver struct{}

@@ -3,7 +3,7 @@ package connection
 import (
 	"database/sql"
 
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/config/constants"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/config/constants"
 	_ "github.com/go-sql-driver/mysql" // to get the db to compile
 )
 

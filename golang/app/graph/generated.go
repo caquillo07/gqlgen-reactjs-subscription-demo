@@ -11,7 +11,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/model"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/model"
 	"github.com/vektah/gqlparser"
 	"github.com/vektah/gqlparser/ast"
 )

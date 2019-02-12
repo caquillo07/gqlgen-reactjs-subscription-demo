@@ -6,8 +6,8 @@ import (
 	"log"
 	"math/rand"
 
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/config/connection"
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/model"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/config/connection"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/model"
 )
 
 var addChannelObserver map[string]chan model.Channel
@@ -27,8 +27,11 @@ func (r *queryResolver) Channels(ctx context.Context) ([]model.Channel, error) {
 	query := "SELECT * FROM channel"
 
 	selDB, err := db.Query(query)
-	var arrChannel []model.Channel
+	if err != nil {
+		return nil, err
+	}
 
+	var arrChannel []model.Channel
 	for selDB.Next() {
 		var name string
 		var id int64

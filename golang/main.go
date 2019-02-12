@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/99designs/gqlgen/handler" // gqlopentracing "github.com/99designs/gqlgen/opentracing"
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/graph"
-	"github.com/caquillo07/golang-gqlgen-reactjs-subscription-demo/golang/app/resolver"
+	"github.com/99designs/gqlgen/handler"
+	gqlopentracing "github.com/99designs/gqlgen-contrib/opentracing"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/graph"
+	"github.com/caquillo07/gqlgen-reactjs-subscription-demo/golang/app/resolver"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
@@ -22,8 +23,8 @@ func main() {
 	// http.Handle("/query", handler.GraphQL(graph.NewExecutableSchema(graph.Config{Resolvers: &resolver.Resolver{}})))
 	http.Handle("/query", corsAccess(handler.GraphQL(graph.NewExecutableSchema(graph.Config{Resolvers: &resolver.Resolver{}}),
 
-		// handler.ResolverMiddleware(gqlopentracing.ResolverMiddleware()),
-		// handler.RequestMiddleware(gqlopentracing.RequestMiddleware()),
+		handler.ResolverMiddleware(gqlopentracing.ResolverMiddleware()),
+		handler.RequestMiddleware(gqlopentracing.RequestMiddleware()),
 		handler.WebsocketUpgrader(websocket.Upgrader{
 			CheckOrigin: func(r *http.Request) bool {
 				return true
