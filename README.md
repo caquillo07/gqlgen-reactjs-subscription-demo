@@ -1,0 +1,1 @@
+# gqlgen-reactjs-subscription-demo
